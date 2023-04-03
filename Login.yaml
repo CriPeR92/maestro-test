@@ -1,0 +1,16 @@
+appId: "com.zenbusiness.app.staging"
+---
+#This test case ensures login on the app
+- launchApp:
+    appId: "com.zenbusiness.app.staging"
+    clearState: true
+    clearKeychain: true
+- assertVisible: "Email"
+- tapOn: "Email"
+- inputText: "carlos.cruz.zbtest.20220216.30@zenbusiness.com"
+- assertVisible: "Password"
+- tapOn: "Password"
+- inputText: "cakeroof"
+- assertVisible: "Sign in"
+- tapOn: "Sign in"
+- tapOn: "Continue"

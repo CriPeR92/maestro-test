@@ -1,0 +1,10 @@
+appId: "com.zenbusiness.app.staging"
+---
+#This test case ensures that the Log out process is working properly on the app
+- extendedWaitUntil:
+    visible: "Log out"
+    timeout: 10000
+- tapOn: "Log out"
+- extendedWaitUntil:
+    visible: "Sign in"
+    timeout: 10000

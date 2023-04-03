@@ -1,0 +1,11 @@
+appId: "com.zenbusiness.app.staging"
+---
+- launchApp:
+    appId: "com.zenbusiness.app.staging"
+    clearState: false
+    clearKeychain: false
+- extendedWaitUntil:
+    visible: "Email"
+    timeout: 30000
+- tapOn:
+    point: 65,170
