@@ -1,0 +1,16 @@
+appId: "com.zenbusiness.app.staging"
+---
+#This test case ensures login on the app with an account that doesn't have documents
+- launchApp:
+    appId: "com.zenbusiness.app.staging"
+    clearState: true
+    clearKeychain: true
+- assertVisible: "Email"
+- tapOn: "Email"
+- inputText: "melissa.angulo+q3@zenbusiness.com"
+- assertVisible: "Password"
+- tapOn: "Password"
+- inputText: "cakeRoof1!"
+- assertVisible: "Sign in"
+- tapOn: "Sign in"
+- tapOn: "Continue"
