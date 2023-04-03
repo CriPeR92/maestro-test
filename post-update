@@ -1,0 +1,48 @@
+#!/usr/bin/env python3
+
+import os
+import json
+
+def convert_to_android(data):
+    android_strings = '<?xml version="1.0" encoding="utf-8"?>\n<resources>\n'
+    for key, value in data.items():
+        android_strings += f'    <string name="{key}">{value}</string>\n'
+    android_strings += '</resources>\n'
+    return android_strings
+
+def convert_to_ios(data):
+    ios_strings = ''
+    for key, value in data.items():
+        ios_strings += f'"{key}" = "{value}";\n'
+    return ios_strings
+
+# Get the path to the JSON file
+json_file = os.path.join(os.getcwd(), 'data.json')
+
+# Check if the JSON file exists
+if not os.path.exists(json_file):
+    print(f'Error: {json_file} does not exist')
+    exit(1)
+
+# Load the JSON data from the file
+with open(json_file) as f:
+    json_data = json.load(f)
+
+# Convert the data to Android string resources format
+android_output = convert_to_android(json_data)
+
+# Write the Android string resources to a file
+android_strings_file = os.path.join(os.getcwd(), 'android', 'res', 'values', 'strings.xml')
+with open(android_strings_file, 'w') as f:
+    f.write(android_output)
+
+# Convert the data to iOS string resources format
+ios_output = convert_to_ios(json_data)
+
+# Write the iOS string resources to a file
+ios_strings_file = os.path.join(os.getcwd(), 'ios', 'Localizable.strings')
+with open(ios_strings_file, 'w') as f:
+    f.write(ios_output)
+
+# Print a success message
+print('JSON data converted to Android and iOS string resources')
